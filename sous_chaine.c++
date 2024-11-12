@@ -1,26 +1,27 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <cstring>
 
-void sous_chaine(const char *source, char *dest, int debut, int longueur) {
+void sousChaine(const char *source, char *dest, int debut, int longueur) {
     // Vérification des paramètres
-    if (debut < 0  longueur < 0  debut + longueur > strlen(source)) {
-        printf("Erreur : paramètres invalides.\n");
+    if (debut < 0 || longueur < 0 || debut + longueur > strlen(source)) {
+        std::cerr << "Erreur : paramètres invalides." << std::endl;
         return;
     }
 
     // Extraction de la sous-chaîne
     strncpy(dest, source + debut, longueur);
-    dest[longueur] = '\0'; // Ajout du caractère nul
+    dest[longueur] = '\0'; // Terminaison de la chaîne
 }
 
 int main() {
     const char *source = "Bonjour, comment vas-tu ?";
     char dest[20];
     int debut = 8;
-    int longueur = 10;
+    int longueur = 6;
 
-    sous_chaine(source, dest, debut, longueur);
-    printf("Sous-chaîne extraite : %s\n", dest);
+    std::cout << "Chaîne source : " << source << std::endl;
+    sousChaine(source, dest, debut, longueur);
+    std::cout << "Sous-chaîne extraite : " << dest << std::endl;
 
-    return 0;
+    return 0;
 }

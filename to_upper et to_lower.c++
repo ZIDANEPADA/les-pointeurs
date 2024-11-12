@@ -1,35 +1,34 @@
-#
-include <stdio.h>
-#include <ctype.h>
+#include <iostream>
 
-void to_upper(char *chaine) {
+void toUpper(char *chaine) {
     while (*chaine) {
-        if (islower(*chaine)) {
-            *chaine = toupper(*chaine);
+        if (*chaine >= 'a' && *chaine <= 'z') {
+            *chaine -= 32; // Différence ASCII entre minuscule et majuscule
         }
         chaine++;
     }
 }
 
-void to_lower(char *chaine) {
+void toLower(char *chaine) {
     while (*chaine) {
-        if (isupper(*chaine)) {
-            *chaine = tolower(*chaine);
+        if (*chaine >= 'A' && *chaine <= 'Z') {
+            *chaine += 32; // Différence ASCII entre majuscule et minuscule
         }
         chaine++;
     }
 }
 
 int main() {
-    char chaine1[] = "Bonjour";
-    char chaine2[] = "BONJOUR";
+    char chaine[] = "Bonjour, Comment Vas-Tu ?";
 
-    printf("Avant transformation : %s\n", chaine1);
-    to_upper(chaine1);
-    printf("Après transformation en majuscules : %s\n\n", chaine1);
+    std::cout << "Chaîne originale : " << chaine << std::endl;
 
-    printf("Avant transformation : %s\n", chaine2);
-    to_lower(chaine2);
-    printf("Après transformation en minuscules : %s\n", chaine2);
-    return 0;
+    toUpper(chaine);
+    std::cout << "Chaîne en majuscules : " << chaine << std::endl;
+
+    toLower(chaine);
+    std::cout << "Chaîne en minuscules : " << chaine << std::endl;
+
+    return 0;
 }
+

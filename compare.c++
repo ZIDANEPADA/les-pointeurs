@@ -1,27 +1,23 @@
-#include <stdio.h>
+#include <iostream>
+#include <string.h>
 
-int compare(const char *chaine1, const char *chaine2) {
-    while (*chaine1 && (*chaine1 == *chaine2)) {
-        chaine1++;
-        chaine2++;
+void compare(char *chaine1, const char *chaine2) {
+    int resultat = strcmp(chaine1, chaine2);
+
+    if (resultat == 0) {
+        std::cout << "Les chaînes sont égales." << std::endl;
+    } else if (resultat > 0) {
+        std::cout << chaine1 << " est lexicographiquement supérieure à " << chaine2 << std::endl;
+    } else {
+        std::cout << chaine1 << " est lexicographiquement inférieure à " << chaine2 << std::endl;
     }
-    return (*chaine1 - *chaine2);
 }
 
 int main() {
-    const char *chaine1 = "Bonjour";
+    char chaine1[] = "Bonjour";
     const char *chaine2 = "Bonsoir";
 
-    int resultat = compare(chaine1, chaine2);
-    printf("Résultat : %d\n", resultat);
+    compare(chaine1, chaine2);
 
-    if (resultat < 0) {
-        printf("%s est plus petit que %s\n", chaine1, chaine2);
-    } else if (resultat > 0) {
-        printf("%s est plus grand que %s\n", chaine1, chaine2);
-    } else {
-        printf("%s est égal à %s\n", chaine1, chaine2);
-    }
-
-    return 0;
+    return 0;
 }

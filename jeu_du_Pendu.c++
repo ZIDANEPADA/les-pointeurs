@@ -1,137 +1,75 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
+#include <string>
+using namespace std;
 
-#define MAX_TENTATIVES 8
-#define LONGUEUR_MOT 12
+const int MAX_TENTATIVES = 8;
+const int LONGUEUR_MOT = 12;
 
-void affiche_pendu(int erreurs) {
-    switch (erreurs) {
-        case 1:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf("     |\n");
-            printf("     |\n");
-            printf("     |\n");
-            printf("     |\n");
-            break;
-        case 2:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" O   |\n");
-            printf("     |\n");
-            printf("     |\n");
-            printf("     |\n");
-            break;
-        case 3:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" O   |\n");
-            printf(" |   |\n");
-            printf("     |\n");
-            printf("     |\n");
-            break;
-        case 4:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" O   |\n");
-            printf(" /|   |\n");
-            printf("     |\n");
-            printf("     |\n");
-            break;
-        case 5:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" O   |\n");
-            printf(" /|\\  |\n");
-            printf("     |\n");
-            printf("     |\n");
-            break;
-        case 6:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" O   |\n");
-            printf(" /|\\  |\n");
-            printf(" /    |\n");
-            printf("     |\n");
-            break;
-        case 7:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" O   |\n");
-            printf(" /|\\  |\n");
-            printf(" / \\  |\n");
-            printf("     |\n");
-            break;
-        case 8:
-            printf(" +---+\n");
-            printf(" |   |\n");
-            printf(" X   |\n");
-            printf(" /|\\  |\n");
-            printf(" / \\  |\n");
-            printf(" GAME OVER!\n");
-            break;
-        default:
-            break;
-    }
+string motADeviner = "PROGRAMMATION";
+string motCache(LONGUEUR_MOT, '_');
+int tentatives = 0;
+
+
+Étape 2 : Fonction d'affichage du pendu
+
+
+void affichePendu(int erreurs) {
+ switch (erreurs) {
+  case 1:
+   cout << " +---+" << endl;
+   cout << " |   |" << endl;
+   cout << "     |" << endl;
+   cout << "     |" << endl;
+   cout << "     |" << endl;
+   break;
+  // ...
+ }
 }
 
+
+Étape 3 : Boucle principale
+
+
 int main() {
-    char mot[LONGUEUR_MOT] = "PROGRAMMATION";
-    char mot_cache[LONGUEUR_MOT];
-    char lettre;
-    int tentatives = 0;
-    int victoire = 0;
+ cout << "Bienvenue au jeu du Pendu !" << endl;
 
-    // Initialisation du mot caché
-    for (int i = 0; i < LONGUEUR_MOT; i++) {
-        mot_cache[i] = '_';
-    }
-    mot_cache[LONGUEUR_MOT] = '\0';
+while (tentatives < MAX_TENTATIVES) {
+#include <string>
+using namespace std;
 
-    printf("Bienvenue au jeu du Pendu!\n");
-    printf("Mot à deviner : %s\n", mot_cache);
+const int MAX_TENTATIVES = 8;
+const int LONGUEUR_MOT = 12;
 
-    while (tentatives < MAX_TENTATIVES && !victoire) {
-        printf("Entrez une lettre : ");
-        scanf(" %c", &lettre);
+string motADeviner = "PROGRAMMATION";
+string motCache(LONGUEUR_MOT, '_');
+int tentatives = 0;
 
-        // Vérification de la lettre
-        int bonne_lettre = 0;
-        for (int i = 0; i < LONGUEUR_MOT; i++) {
-            if (mot[i] == lettre) {
-                mot_cache[i] = lettre;
-                bonne_lettre = 1;
-            }
-        }
 
-        // Mise à jour de l'affichage
-        printf("Mot à deviner : %s\n", mot_cache);
+Étape 2 : Fonction d'affichage du pendu
 
-        // Vérification de la victoire
-        victoire = 1;
-        for (int i = 0; i < LONGUEUR_MOT; i++) {
-            if (mot_cache[i] == '_') {
-                victoire = 0;
-                break;
-            }
-        }
 
-        // Erreur
-        if (!bonne_lettre) {
-            tentatives++;
-            affiche_pendu(tentatives);
-            printf("Tentatives restantes : %d\n", MAX_TENTATIVES - tentatives);
-        }
-    }
+void affichePendu(int erreurs) {
+ switch (erreurs) {
+  case 1:
+   cout << " +---+" << endl;
+   cout << " |   |" << endl;
+   cout << "     |" << endl;
+   cout << "     |" << endl;
+   cout << "     |" << endl;
+   break;
+  // ...
+ }
+}
 
-    // Fin de partie
-    if (victoire) {
-        printf("Félicitations, vous avez gagné!\n");
-    } else {
-        printf("Game Over! Le mot était : %s\n", mot);
-    }
 
-    return 0;
+Étape 3 : Boucle principale
+
+
+int main() {
+ cout << "Bienvenue au jeu du Pendu !" << endl;
+
+while (tentatives < MAX_TENTATIVES) {
+ }
+
+ cout << "Game Over ! Le mot était : " << motADeviner << endl;
+ return 0;
 }

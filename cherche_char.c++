@@ -1,13 +1,8 @@
-#include <stdio.h>
+#include <iostream>
+#include <string.h>
 
-char *cherche_char(const char *chaine, char caractere) {
-    while (*chaine) {
-        if (*chaine == caractere) {
-            return (char *) chaine;
-        }
-        chaine++;
-    }
-    return NULL;
+char* cherche_char(const char *chaine, char caractere) {
+    return strchr(chaine, caractere);
 }
 
 int main() {
@@ -16,11 +11,12 @@ int main() {
 
     char *resultat = cherche_char(chaine, caractere);
 
-    if (resultat) {
-        printf("Caractère '%c' trouvé à l'adresse %p\n", caractere, resultat);
+    if (resultat != NULL) {
+        std::cout << "Caractère trouvé : " << resultat << std::endl;
     } else {
-        printf("Caractère '%c' non trouvé\n", caractere);
+        std::cout << "Caractère non trouvé." << std::endl;
     }
 
     return 0;
 }
+

@@ -1,30 +1,21 @@
-#include <stdio.h>
+#include <iostream>
 #include <string.h>
 
-char *cherche_mot(const char *phrase, const char *mot) {
-    char *position = strstr(phrase, mot);
-    return position;
+char* cherche_mot(const char *phrase, const char *mot) {
+    return strstr(phrase, mot);
 }
 
 int main() {
     const char *phrase = "Bonjour, comment vas-tu ?";
-    const char *mot1 = "comment";
-    const char *mot2 = "aujourd'hui";
+    const char *mot = "comment";
 
-    char *resultat1 = cherche_mot(phrase, mot1);
-    char *resultat2 = cherche_mot(phrase, mot2);
+    char *resultat = cherche_mot(phrase, mot);
 
-    if (resultat1) {
-        printf("Mot '%s' trouvé à l'adresse %p\n", mot1, resultat1);
+    if (resultat != NULL) {
+        std::cout << "Mot trouvé : " << resultat << std::endl;
     } else {
-        printf("Mot '%s' non trouvé\n", mot1);
+        std::cout << "Mot non trouvé." << std::endl;
     }
 
-    if (resultat2) {
-        printf("Mot '%s' trouvé à l'adresse %p\n", mot2, resultat2);
-    } else {
-        printf("Mot '%s' non trouvé\n", mot2);
-    }
-
-    return 0;
+    return 0;
 }

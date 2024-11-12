@@ -1,22 +1,22 @@
-#include <stdio.h>
+#include <iostream>
 
 int longueur(const char *chaine) {
-    int taille = 0;
+    int longueur = 0;
     while (*chaine != '\0') {
-        taille++;
+        longueur++;
         chaine++;
     }
-    return taille;
+    return longueur;
 }
 
 int main() {
     const char *chaine1 = "Bonjour";
-    const char *chaine2 = "Hello World!";
+    const char *chaine2 = "ABCDEF";
     const char *chaine3 = "";
 
-    printf("Longueur de '%s' : %d\n", chaine1, longueur(chaine1));
-    printf("Longueur de '%s' : %d\n", chaine2, longueur(chaine2));
-    printf("Longueur de '%s' : %d\n", chaine3, longueur(chaine3));
+    std::cout << "Longueur de \"" << chaine1 << "\" : " << longueur(chaine1) << std::endl;
+    std::cout << "Longueur de \"" << chaine2 << "\" : " << longueur(chaine2) << std::endl;
+    std::cout << "Longueur de \"" << chaine3 << "\" : " << longueur(chaine3) << std::endl;
 
-    return 0;
+   return 0;
 }

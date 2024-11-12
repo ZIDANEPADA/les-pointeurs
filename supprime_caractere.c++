@@ -1,25 +1,27 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <cstring>
 
-void supprime_caractere(char *chaine, char caractere) {
-    int i, j = 0;
+void supprimeCaractere(char *chaine, char caractere) {
+    int longueur = strlen(chaine);
+    int debut = 0;
 
-    for (i = 0; chaine[i]; i++) {
+    for (int i = 0; i < longueur; i++) {
         if (chaine[i] != caractere) {
-            chaine[j++] = chaine[i];
+            chaine[debut] = chaine[i];
+            debut++;
         }
     }
 
-    chaine[j] = '\0'; // Marquer la fin de la chaîne
+    chaine[debut] = '\0'; // Terminaison de la chaîne
 }
 
 int main() {
     char chaine[] = "Bonjour, comment vas-tu ?";
     char caractere = 'o';
 
-    printf("Chaîne originale : %s\n", chaine);
-    supprime_caractere(chaine, caractere);
-    printf("Chaîne après suppression : %s\n", chaine);
+    std::cout << "Chaîne originale : " << chaine << std::endl;
+    supprimeCaractere(chaine, caractere);
+    std::cout << "Chaîne après suppression : " << chaine << std::endl;
 
-    return 0;
+    return 0;
 }
